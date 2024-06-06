@@ -1,51 +1,42 @@
 <template>
-  <!-- <pre :class="`brush: ${lang};`" v-text="code"></pre> -->
-  <div
-    id="result"
-    :class="'container'"
-    v-show="data.code"
-  >
-    <div class="options">
-      <span>
-        <font-awesome-icon
-          :icon="['fas', 'question-circle']"
-          style="margin-right:5px"
-        />press <a href="javascript:void(0)">ctrl + A</a> to select formatted
-        code, <a href="javascript:void(0)">double click</a> for plain text.
-      </span>
-      <p>
-        <font-awesome-icon :icon="['fas', 'bug']" /> got problems?
-        <a href="https://github.com/littlegolden/syntax-highlight-word/"
-          >report</a
-        >
-      </p>
+  <div class="container">
+    <!-- <pre :class="`brush: ${lang};`" v-text="code"></pre> -->
+    <div id="result" :class="'container'" v-show="data.code">
+      <div class="options">
+        <p>Options:</p>
+        <span>
+          <font-awesome-icon :icon="['fas', 'question-circle']" style="margin-right:5px" />press <a
+            href="javascript:void(0)">ctrl + A</a> to select formatted
+          code, <a href="javascript:void(0)">double click</a> for plain text.
+        </span>
+        <p>
+          <font-awesome-icon :icon="['fas', 'bug']" /> got problems?
+          <a href="https://github.com/littlegolden/syntax-highlight-word/">report</a>
+        </p>
+        <p>Preview:</p>
+        <script type="text/syntaxhighlighter" :class="`brush: ${data.lang};`" auto-links="true">
+        <![CDATA[{{data.code}}]]>
+      </script>
+
+        <div class="msg" v-show="msg"
+          style="max-width: 810px;font-size:2rem;color:#000;margin-left: auto;margin-right: auto;">
+          {{ msg }}
+        </div>
+      </div>
     </div>
-    <script
-      type="text/syntaxhighlighter"
-      :class="`brush: ${data.lang};`"
-      auto-links="true"
-    >
-      <![CDATA[{{data.code}}]]>
-    </script>
-    <div
-      class="msg"
-      v-show="msg"
-      style="max-width: 810px;font-size:2rem;color:#000;margin-left: auto;margin-right: auto;"
-    >
-      {{ msg }}
-    </div>
+
   </div>
 </template>
 
 <script>
 export default {
   name: 'Highlight',
-  data () {
+  data() {
     return {
       msg: ''
     }
   },
-  mounted () {
+  mounted() {
     window.onerror = (msg, url, line, col, error) => {
       this.msg = `${msg}`
     }
@@ -71,41 +62,4 @@ export default {
 
 <style lang="less">
 @import '../assets/css/syntaxhighlighter.css';
-#result {
-  letter-spacing: normal;
-  padding-top: 1rem;
-  &.container {
-    // font-size: 12px;
-    &:not(.selectGunt) td.gutter,
-    .toolbar {
-      user-select: none;
-    }
-  }
-  > p {
-    user-select: none;
-  }
-  .options {
-    max-width: 810px;
-    margin-left: auto;
-    margin-right: auto;
-    user-select: none;
-    color: #666;
-  }
-  .syntaxhighlighter .code .line.alt1 {
-    background-color: #f8f8f8;
-  }
-  .syntaxhighlighter .gutter .line {
-    border-right: none;
-  }
-  .code {
-    letter-spacing: initial;
-    .line {
-      border-left: 3px solid #6ce26c;
-      line-height: 14px;
-    }
-  }
-  ol {
-    margin: 0;
-  }
-}
 </style>

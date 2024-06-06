@@ -26,23 +26,23 @@
           <p>
             Placed a form around
             <a href="http://code.google.com/p/syntaxhighlighter/"
-              >Google’s SyntaxHighlighter javascript code.</a
+              >Google's SyntaxHighlighter javascript code.</a
             >
             Made it easier to use.
           </p>
           <p>
             To get some nice syntax highlighted code into a Word document, use
             IE and copy and paste some code into the form below and click the
-            button. A new window will popup with the syntax highlighed code.
-            Copy all and paste into your document. Unfortunately Firefox doesn’t
-            copy and paste into Word like IE does, so you’re stuck with IE if
-            you’re looking to copy the resulting formatted code into a Word doc.
+            button. A new window will popup with the syntax highlighted code.
+            Copy all and paste into your document. Unfortunately Firefox doesn't
+            copy and paste into Word like IE does, so you're stuck with IE if
+            you're looking to copy the resulting formatted code into a Word doc.
           </p>
         </div>
+        <form-app v-on:submit="onSubmit"></form-app>
+        <Highlight :data="data" :key="key"></Highlight>
       </div>
     </main>
-    <form-app v-on:submit="onSubmit"></form-app>
-    <Highlight :data="data" :key="key"></Highlight>
     <footer>
       <div class="container">
         <p>
@@ -89,6 +89,63 @@ export default {
 </script>
 
 <style lang="less">
+#header {
+  header {
+    height: 50px;
+    border-top: 5px solid #ff7e71;
+    background: #373737 url(../../static/headerbackground.jpg) no-repeat center
+      bottom;
+    background-size: cover;
+    color: #eee;
+    font-weight: bold;
+    font-size: 50px;
+    position: relative;
+    z-index: 999;
+    .logo {
+      height: calc(45px + 3px);
+      line-height: calc(45px + 3px);
+      &:after{
+        content: url('../assets/new.gif')
+      }
+    }
+  }
+  nav {
+    background-color: #fff;
+    box-shadow: 1px 1px 2px #33333333;
+    .container {
+      display: flex;
+    }
+    .top {
+      font-size: 1.2rem;
+      background-color: #ff7e71;
+    }
+    a {
+      height: 50px;
+      line-height: 50px;
+      display: inline-block;
+    }
+    a:first-child {
+      width: 70px;
+      text-align: center;
+      color: #fff;
+      margin-right: 2rem;
+    }
+    a:not(:first-child) {
+      color: #999;
+      font-size: 12px;
+      letter-spacing: 1pt;
+      text-align: center;
+      text-decoration: none;
+      padding: 0 5rem;
+      text-transform: uppercase;
+      &:hover {
+        background-color: #ff7e71;
+        color: #fff;
+        text-shadow: 0px 1px 0px #9b100080;
+      }
+    }
+  }
+}
 .contact {
   height: 40px;
   border-bottom: 1px solid #ccc;
@@ -162,17 +219,88 @@ main {
     }
   }
 }
+#form {
+  padding-top: 1rem;
+  form {
+    max-width: 970px;
+    margin-left: auto;
+    margin-right: auto;
+    textarea {
+      width: 100%;
+      resize: none;
+      white-space: nowrap;
+    }
+    .actions {
+      p {
+      margin-top: 0;
+      margin-bottom: 20px;
+      color: rgb(102, 102, 102);
+      line-height: 30px;
+      letter-spacing: 1pt;
+      font-size: 14px;
+    }
+      .select {
+        display: inline-block;
+        margin-right: 4rem;
+      }
+    }
+  }
+}
+#result {
+  letter-spacing: normal;
+  padding-top: 1rem;
+
+  &.container {
+
+    // font-size: 12px;
+    &:not(.selectGunt) td.gutter,
+    .toolbar {
+      user-select: none;
+    }
+  }
+
+  p {
+      margin-top: 0;
+      margin-bottom: 20px;
+      color: rgb(102, 102, 102);
+      line-height: 30px;
+      letter-spacing: 1pt;
+      font-size: 14px;
+    }
+
+  .options {
+    max-width: 970px;
+    margin-left: auto;
+    margin-right: auto;
+    user-select: none;
+    color: #666;
+  }
+
+  .syntaxhighlighter .code .line.alt1 {
+    background-color: #f8f8f8;
+  }
+
+  .syntaxhighlighter .gutter .line {
+    border-right: none;
+  }
+
+  .code {
+    letter-spacing: initial;
+
+    .line {
+      border-left: 3px solid #6ce26c;
+      line-height: 14px;
+    }
+  }
+
+  ol {
+    margin: 0;
+  }
+}
 footer {
   padding-top: 6rem;
   padding-bottom: 2rem;
   text-align: center;
   color: #666666;
-  p{
-    margin: 0;
-    &:first-child{
-      font-size: 12px;
-      margin: .5rem 0;
-    }
-  }
 }
 </style>

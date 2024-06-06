@@ -60,28 +60,3 @@ export default {
   }
 }
 </script>
-
-<style lang="less">
-#form {
-  padding-top: 1rem;
-  form {
-    max-width: 810px;
-    margin-left: auto;
-    margin-right: auto;
-    textarea {
-      width: 100%;
-      resize: none;
-      white-space: nowrap;
-    }
-    .actions {
-      p {
-        margin: 0;
-      }
-      .select {
-        display: inline-block;
-        margin-right: 4rem;
-      }
-    }
-  }
-}
-</style>

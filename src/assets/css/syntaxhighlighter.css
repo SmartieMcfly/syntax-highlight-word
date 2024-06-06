@@ -139,7 +139,7 @@
   .syntaxhighlighter.printing .plain, .syntaxhighlighter.printing .plain a {
     color: black; }
   .syntaxhighlighter.printing .comments, .syntaxhighlighter.printing .comments a {
-    color: #008200; }
+    color: #808080; }
   .syntaxhighlighter.printing .string, .syntaxhighlighter.printing .string a {
     color: blue; }
   .syntaxhighlighter.printing .keyword {
@@ -211,7 +211,7 @@
   .syntaxhighlighter .plain, .syntaxhighlighter .plain a {
     color: black; }
   .syntaxhighlighter .comments, .syntaxhighlighter .comments a {
-    color: #008200; }
+    color: #808080; }
   .syntaxhighlighter .string, .syntaxhighlighter .string a {
     color: blue; }
   .syntaxhighlighter .keyword {
